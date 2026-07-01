@@ -1,0 +1,35 @@
+from tkinter import *
+from datetime import date
+def calculate_age():
+    d = int(entry_d.get())
+    m = int(entry_m.get())
+    y = int(entry_y.get())
+    today = date.today()
+    age = today.year - y
+    if (today.month, today.day) < (m, d):
+        age -= 1
+    label_result.config(text="Age: " + str(age))
+window=Tk()
+window.title("Age Calculator app")
+window.geometry("400x400")
+n_label=Label(text="Enter your name: ",fg="black",bg="white")
+entry_n=Entry(fg="black",bg="white")
+n_label.pack()
+entry_n.pack()
+d_label=Label(text="Enter the date of your birthday: ",fg="black",bg="white")
+entry_d=Entry(fg="black",bg="white")
+d_label.pack()
+entry_d.pack()
+m_label=Label(text="Enter the month of your birthday: ",fg="black",bg="white")
+entry_m=Entry(fg="black",bg="white")
+m_label.pack()
+entry_m.pack()
+y_label=Label(text="Enter the year of your birthday: ",fg="black",bg="white")
+entry_y=Entry(fg="black",bg="white")
+y_label.pack()
+entry_y.pack()
+button=Button(text="Calculate your age",command=calculate_age)
+button.pack()
+label_result=Label(text="Age: ")
+label_result.pack()
+window.mainloop()
